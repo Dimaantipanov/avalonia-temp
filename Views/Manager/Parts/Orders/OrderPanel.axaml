@@ -1,0 +1,61 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Orders.OrderPanel">
+    
+          <Grid RowDefinitions="Auto, *" Margin="20">
+        
+        <!-- ЗАГОЛОВОК И СТАТУС ПАНЕЛИ -->
+        <Border Grid.Row="0" Background="#1E1E24" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+            <StackPanel Spacing="5">
+                <TextBlock Text="УПРАВЛЕНИЕ ЗАКАЗАМИ И АКТИВАЦИЯ ПРОИЗВОДСТВА" FontSize="14" Foreground="White" FontWeight="Bold"/>
+                <TextBlock Text="Список всех черновиков и созданных ордеров. Активация запускает заказ напрямую в цех Мастеру." FontSize="11" Foreground="#8A8A93"/>
+                <!-- Статусная строка для вывода ошибок сети -->
+                <TextBlock x:Name="ErrorBlockText" Text="" Foreground="Red" FontSize="11" FontWeight="SemiBold" Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ОБЩИЙ ПУЛ ЗАКАЗОВ ERP -->
+        <Border Grid.Row="1" Background="#1E1E24" CornerRadius="5" Padding="10">
+            <Grid RowDefinitions="Auto, *">
+                <TextBlock Grid.Row="0" Text="ЖУРНАЛ ОРДЕРОВ SYSTEM" FontSize="11" Foreground="#8A8A93" FontWeight="Bold" Margin="5,5,5,10"/>
+                
+                <DataGrid Grid.Row="1" x:Name="OrdersDataGrid" x:CompileBindings="False" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All" BorderThickness="1" BorderBrush="#2D2D35">
+                    <DataGrid.Columns>
+                        <!-- Основные данные заказа из бэкенд модели Order -->
+                        <DataGridTextColumn Header="ID Заказа" Width="100" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Адрес объекта" Width="*" Binding="{Binding Address}"/>
+                        <DataGridTextColumn Header="Текущий статус" Width="120" Binding="{Binding Status}"/>
+                        <DataGridTextColumn Header="Менеджер (Создатель)" Width="150" Binding="{Binding CreatedById}"/>
+                        
+                        <!-- Колонка боевого действия: Запуск по факту предоплаты -->
+                        <DataGridTemplateColumn Header="Действие" Width="220">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="ActivateOrderButton"
+                                            Content="ЗАПУСТИТЬ В РАБОТУ" 
+                                            Background="#2E7D32" 
+                                            Foreground="White" 
+                                            HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" 
+                                            Padding="15,5" 
+                                            FontWeight="Bold"
+                                            FontSize="11"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</UserControl>
+
+    

@@ -1,0 +1,151 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels.States.Auth"
+    x:Class="FenceFactory.Desktop.Views.Auth.AuthView"
+    x:DataType="vm:AuthViewModel"
+    Classes="window-shell">
+
+    <!-- Горизонтальный контейнер для центрирования обеих панелей на экране -->
+    <StackPanel
+        Orientation="Horizontal"
+        Spacing="20"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+
+        <!-- Основной контейнер-карточка по центру -->
+        <Border
+            Classes="content-card"
+            Width="360"
+            Padding="30,40"
+            IsEnabled="{Binding !IsBusy}"> <!-- Блокируем ввод при запросе к PostgreSQL -->
+
+            <StackPanel
+                Spacing="18">
+
+                <!-- Заголовок в стиле современных облачных платформ -->
+                <TextBlock
+                    Classes="header-title"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,10"
+                    Text="FENCEFACTORY ERP" />
+
+                <!-- Поле Email -->
+                <StackPanel
+                    Spacing="6">
+                    <TextBlock
+                        Classes="header-prefix"
+                        Text="Рабочий Email" />
+                    <TextBox
+                        Text="{Binding Email, Mode=TwoWay}"
+                        Classes="main-input"
+                        Watermark="example@factory.com" />
+                </StackPanel>
+
+                <!-- Поле Пароля -->
+                <StackPanel
+                    Spacing="6">
+                    <TextBlock
+                        Classes="header-prefix"
+                        Text="Пароль" />
+                    <TextBox
+                        Text="{Binding Password, Mode=TwoWay}"
+                        Classes="main-input"
+                        PasswordChar="•"
+                        Watermark="••••••••" />
+                </StackPanel>
+
+                <!-- ТВОЙ АЛАРМ: Виден только если есть текст ошибки -->
+                <TextBlock
+                    Classes="error-text"
+                    HorizontalAlignment="Center"
+                    Margin="0,5,0,5"
+                    Text="{Binding ErrorMessage}"
+                    IsVisible="{Binding HasError}" />
+
+                <!-- Кнопка авторизации -->
+                <Button
+                    Command="{Binding LoginCommand}"
+                    Classes="menu-btn active"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Margin="0,10,0,0">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="ВОЙТИ В СИСТЕМУ" />
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Вспомогательная панель быстрых пресетов -->
+        <Border
+            Classes="content-card"
+            Width="180"
+            Padding="20"
+            VerticalAlignment="Stretch"
+            IsEnabled="{Binding !IsBusy}">
+            <StackPanel
+                Spacing="10"
+                VerticalAlignment="Center">
+                <TextBlock
+                    Classes="header-prefix"
+                    Text="авто заполнение"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,5" />
+                <Button
+                    Command="{Binding ApplyPresetCommand}"
+                    CommandParameter="FirstLaunch"
+                    Classes="menu-btn"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="первый запуск" />
+                </Button>
+                <Button
+                    Command="{Binding ApplyPresetCommand}"
+                    CommandParameter="Director"
+                    Classes="menu-btn"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="директор" />
+                </Button>
+                <Button
+                    Command="{Binding ApplyPresetCommand}"
+                    CommandParameter="Manager"
+                    Classes="menu-btn"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="мненджер" />
+                </Button>
+                <Button
+                    Command="{Binding ApplyPresetCommand}"
+                    CommandParameter="Supplier"
+                    Classes="menu-btn"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="снабженец" />
+                </Button>
+                <Button
+                    Command="{Binding ApplyPresetCommand}"
+                    CommandParameter="Master"
+                    Classes="menu-btn"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="мастер" />
+                </Button>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</UserControl>

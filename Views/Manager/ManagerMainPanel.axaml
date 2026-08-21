@@ -1,0 +1,85 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:components="clr-namespace:FenceFactory.Desktop.Views.Manager.Parts"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels.States.Manager"
+    x:DataType="vm:ManagerMainPanelViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="1280"
+    d:DesignHeight="800"
+    x:Class="FenceFactory.Desktop.Views.Manager.ManagerMainPanel">
+    <!-- Главная сетка: делим экран по вертикали на верхнюю шапку (70px) и нижнюю рабочую зону (*) -->
+    <Grid>
+        <!-- ОСНОВНОЙ КОНТЕНТ ПАНЕЛИ (Блокируется полностью, если IsBusy = true) -->
+        <Grid 
+            Classes="main-workspace"
+            RowDefinitions="70,*"
+            IsEnabled="{Binding !IsBusy}">
+
+            <!-- ВЕРХНЯЯ ШАПКА -->
+            <Border
+                Grid.Row="0"
+                Classes="sidebar-panel"
+                BorderThickness="0,0,0,1"
+                Padding="20,0">
+                <Grid>
+                    <!-- Технический префикс слева -->
+                    <TextBlock
+                        Classes="header-prefix"
+                        HorizontalAlignment="Left"
+                        Text="// WORKSPACE.MANAGER" />
+
+                    <!-- Главный заголовок по центру -->
+                    <TextBlock
+                        Classes="header-title"
+                        HorizontalAlignment="Center"
+                        Text="ЭКРАН МЕНЕДЖЕРА" />
+                </Grid>
+            </Border>
+
+            <!-- НИЖНЯЯ РАБОЧАЯ ЗОНА -->
+            <Grid
+                Grid.Row="1"
+                Classes="main-workspace"
+                ColumnDefinitions="260,*">
+
+                <!-- ЛЕВАЯ НАВИГАЦИОННАЯ ПАНЕЛЬ -->
+                <components:ManagerMenuPart 
+                    Grid.Column="0" />
+
+                <!-- ПРАВАЯ ЧАСТЬ: КАНОНИЧЕСКИЙ ВЬЮПОРТ НАВИГАЦИИ -->
+                <!-- Конкретные DataTemplate для вложенных панелей должны быть 
+                     объявлены на уровне App.axaml или вышестоящего Window -->
+                <ContentControl
+                    Grid.Column="1"
+                    Content="{Binding CurrentActivePanelViewModel}" />
+
+            </Grid>
+        </Grid>
+
+        <!-- ИНДИКАТОР ЗАГРУЗКИ ТОНКОГО КЛИЕНТА (Слой поверх интерфейса при IsBusy) -->
+        <Border 
+            Background="#A014161B"
+            IsVisible="{Binding IsBusy}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <StackPanel 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                Spacing="10">
+                <ProgressBar 
+                    IsIndeterminate="True" 
+                    Width="200" 
+                    Height="4"
+                    Background="#2D3139"
+                    Foreground="#3B82F6"/>
+                <TextBlock 
+                    Classes="header-prefix" 
+                    HorizontalAlignment="Center" 
+                    Text="ОБРАБОТКА ДАННЫХ СЕРВЕРОМ..." />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

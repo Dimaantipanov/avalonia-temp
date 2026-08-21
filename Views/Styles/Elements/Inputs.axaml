@@ -1,0 +1,28 @@
+<Style
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Add Resources Here -->
+    <!-- НАСТРОЙКА СТАНДАРТНЫХ ПОЛЕЙ ВВОДА (TEXTBOX) -->
+    <Style Selector="TextBox.main-input">
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="FontFamily" Value="Courier New"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Height" Value="38"/>
+        <Setter Property="Background" Value="#1A1C20"/>
+        <Setter Property="Foreground" Value="#E2E8F0"/>
+        <Setter Property="BorderBrush" Value="#2D3139"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        
+        <!-- УБРАЛИ 10 ПИКСЕЛЕЙ СВЕРХУ И СНИЗУ, ОСТАВИЛИ ТОЛЬКО БОКОВЫЕ -->
+        <Setter Property="Padding" Value="12,0,12,0"/> 
+        
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+
+    <!-- СТИЛЬ ДЛЯ ПОЛЯ ВВОДА ПРИ ФОКУСЕ (КОГДА ТУДА КЛИКНУЛИ) -->
+    <Style Selector="TextBox.main-input:focus">
+        <Setter Property="Background" Value="#1F2226"/>
+        <Setter Property="BorderBrush" Value="#3B82F6"/> <!-- Подсвечиваем синим при вводе -->
+    </Style>
+</Style>

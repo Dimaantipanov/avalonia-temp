@@ -1,0 +1,59 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:components="clr-namespace:FenceFactory.Desktop.Views.Supplier.Parts"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels"
+    x:DataType="vm:MainWindowViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="1280"
+    d:DesignHeight="800"
+    x:Class="FenceFactory.Desktop.Views.Supplier.SupplierMainPanel">
+    
+    <!-- Главная сетка: делим экран по вертикали на верхнюю шапку (70px) и нижнюю рабочую зону (*) -->
+    <Grid
+        Background="#14161B"
+        RowDefinitions="70,*">
+
+        <!-- ВЕРХНЯЯ ШАПКА: Повторяем твой стиль панелей -->
+        <Border
+            Grid.Row="0"
+            Classes="sidebar-panel"
+            BorderThickness="0,0,0,1"
+            Padding="20,0">
+            <Grid>
+                <!-- Технический префикс слева -->
+                <TextBlock
+                    Classes="header-prefix"
+                    HorizontalAlignment="Left"
+                    Text="// WORKSPACE.SUPPLIER" />
+
+                <!-- Главный заголовок по центру -->
+                <TextBlock
+                    Classes="header-title"
+                    HorizontalAlignment="Center"
+                    Text="ЭКРАН СНАБЖЕНЦА" />
+            </Grid>
+        </Border>
+
+        <!-- НИЖНЯЯ РАБОЧАЯ ЗОНА: Делится строго на левую и правую колонки -->
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="260,*">
+
+            <!-- ЛЕВАЯ ПАНЕЛЬ С КНОПКАМИ СНАБЖЕНЦА -->
+            <components:SupplierMenuPart 
+                Grid.Column="0" />
+
+            <!-- ТВОЯ ПРАВАЯ ЧАСТЬ (Целевой вьюпорт Снабженца под слайсы) -->
+            <Grid
+                Grid.Column="1"
+                Name="SupplierViewport">
+                <!-- Сюда фабрика будет силой вшивать слайсы дефицита и прихода -->
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+</UserControl>

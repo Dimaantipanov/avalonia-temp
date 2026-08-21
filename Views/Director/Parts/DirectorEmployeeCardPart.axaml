@@ -1,0 +1,50 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels.States.Director.Parts"
+    x:DataType="vm:EmployeeCardViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="240"
+    d:DesignHeight="180"
+    x:Class="FenceFactory.Desktop.Views.Director.Parts.DirectorEmployeeCardPart">
+
+    <Border 
+        Classes="content-card"
+        Height="46"
+        Padding="20,0">
+    
+        <!-- Жесткое разделение по колонкам с фиксированной шириной для роли -->
+        <Grid ColumnDefinitions="*, 350, Auto">
+        
+            <!-- Блок 1: Email сотрудника -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Classes="header-prefix" Text="EMAIL: " Margin="0,0,8,0"/>
+                <TextBlock Classes="buton-text" Text="{Binding Email}" FontSize="14"/>
+            </StackPanel>
+            
+            <!-- Блок 2: Должность с человеческой подписью -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Classes="header-prefix" Text="ДОЛЖНОСТЬ: " Margin="0,0,8,0"/>
+                <!-- Подсвечиваем должность белым и жирным для читаемости -->
+                <TextBlock Classes="buton-text" Text="{Binding RolePrefix}" FontSize="13" Foreground="#60A5FA"/>
+            </StackPanel>
+        
+            <!-- Блок 3: Кнопка деструктивного действия -->
+            <Button 
+                Grid.Column="2"
+                Classes="exit-btn"
+                Command="{Binding DeleteEmployeeCommand}"
+                VerticalAlignment="Center"
+                Width="120"
+                Height="32">
+                <TextBlock 
+                    Classes="buton-exit-text" 
+                    HorizontalAlignment="Center"
+                    Text="УВОЛИТЬ" />
+            </Button>
+        
+        </Grid>
+    </Border>
+</UserControl>

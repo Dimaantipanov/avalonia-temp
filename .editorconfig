@@ -1,0 +1,4 @@
+[*.axaml]
+xaml_attributes_indentation = one_per_line
+xaml_space_before_lowercase_element_content_close_tag = true
+

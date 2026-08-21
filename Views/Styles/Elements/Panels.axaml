@@ -1,0 +1,52 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ВНЕШНИЙ ФОН И АВТО-РАЗВЕРТЫВАНИЕ ОКНА -->
+    <Style
+        Selector="Window.window-shell">
+        <Setter
+            Property="Background"
+            Value="#2A2D32" />
+        <Setter
+            Property="WindowState"
+            Value="Maximized" />
+    </Style>
+
+    <!-- ГЛАВНЫЙ КОРНЕВОЙ ФОН ДЛЯ СЕТОК И ПАНЕЛЕЙ (РАБОЧАЯ ОБЛАСТЬ) -->
+    <Style
+        Selector="Grid.main-workspace, DockPanel.main-workspace">
+        <Setter
+            Property="Background"
+            Value="#14161B" />
+    </Style>
+
+    <!-- ТЕМНАЯ БОКОВАЯ ПАНЕЛЬ ИЛИ ШАПКА (С серой рамкой) -->
+    <Style
+        Selector="Border.sidebar-panel">
+        <Setter
+            Property="Background"
+            Value="#1C1E22" />
+        <Setter
+            Property="BorderBrush"
+            Value="#33373E" />
+    </Style>
+
+    <!-- КАРТОЧКА ДЛЯ КОНТЕНТА И ФОРМ -->
+    <Style
+        Selector="Border.content-card">
+        <Setter
+            Property="Background"
+            Value="#1C1E22" />
+        <Setter
+            Property="BorderBrush"
+            Value="#33373E" />
+        <Setter
+            Property="BorderThickness"
+            Value="1" />
+        <Setter
+            Property="CornerRadius"
+            Value="0" />
+    </Style>
+
+</Styles>

@@ -1,0 +1,90 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels.States.Director"
+    xmlns:enums="using:FenceFactory.Desktop.Services.Network"
+    mc:Ignorable="d"
+    d:DesignWidth="1280"
+    d:DesignHeight="800"
+    x:Class="FenceFactory.Desktop.Views.Director.DirectorCoreStaffRegistrationPanel"
+    x:DataType="vm:DirectorCoreStaffRegistrationViewModel">
+    
+   <Grid Classes="main-workspace" IsEnabled="{Binding !IsBusy}">
+    <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        <!-- Главная панель формы (Ширина 500) -->
+        <Border Width="500" Classes="content-card" Padding="30, 25">
+            <StackPanel Orientation="Vertical" Spacing="16">
+
+                <!-- Заголовки -->
+                <StackPanel Spacing="5" HorizontalAlignment="Center">
+                    <TextBlock Text="👥 ФОРМИРОВАНИЕ ШТАТА ERP" Classes="header-title" FontSize="18"/>
+                    <TextBlock Text="Панель 3: Первоначальная регистрация персонала завода" Classes="header-prefix" Foreground="#3B82F6"/>
+                </StackPanel>
+
+                <Border Height="1" Background="#3A3F47" />
+
+                <!-- Кнопки выбора роли -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Выберите роль для регистрации сотрудника:" Classes="header-prefix"/>
+                    <Grid ColumnDefinitions="*, *, *">
+                        <Button Grid.Column="0" Content="Менеджер" Classes="menu-btn" Classes.active="{Binding IsManagerSelected}" Command="{Binding SelectRoleCommand}" CommandParameter="{x:Static enums:UserRole.Manager}" Margin="2" HorizontalAlignment="Stretch"/>
+                        <Button Grid.Column="1" Content="Снабженец" Classes="menu-btn" Classes.active="{Binding IsSupplierSelected}" Command="{Binding SelectRoleCommand}" CommandParameter="{x:Static enums:UserRole.Supplier}" Margin="2" HorizontalAlignment="Stretch"/>
+                        <Button Grid.Column="2" Content="Мастер" Classes="menu-btn" Classes.active="{Binding IsMasterSelected}" Command="{Binding SelectRoleCommand}" CommandParameter="{x:Static enums:UserRole.Master}" Margin="2" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Форма ввода данных -->
+                <StackPanel Spacing="12">
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Рабочий Email (Логин)" Classes="header-prefix"/>
+                        <TextBox Text="{Binding Email}" Classes="main-input"/>
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Временный пароль" Classes="header-prefix"/>
+                        <TextBox Text="{Binding Password}" PasswordChar="•" Classes="main-input"/>
+                    </StackPanel>
+                </StackPanel>
+                
+               <!-- Единый блок статуса: динамически принимает класс 'error', если флаг равен True -->
+               <Border 
+                   BorderThickness="1" 
+                   CornerRadius="0" 
+                   Padding="10" 
+                   IsVisible="{Binding HasStatus}"
+                   Classes.error="{Binding IsStatusAnError}">
+               
+                   <TextBlock 
+                       Text="{Binding StatusMessage}" 
+                       FontFamily="Courier New"
+                       FontSize="12" 
+                       FontWeight="Bold" 
+                       TextWrapping="Wrap" 
+                       HorizontalAlignment="Center" 
+                       TextAlignment="Center"/>
+               </Border>
+
+                <!-- Кнопки управления -->
+                <StackPanel Spacing="8" Margin="0,10,0,0">
+                    <Button Content="Внести сотрудника в базу данных" Classes="menu-btn active" Command="{Binding SaveStaffCommand}" HorizontalAlignment="Stretch"/>
+                    <Button Content="Далее" Classes="menu-btn" Command="{Binding NextStepCommand}" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Правая панель быстрых пресетов -->
+        <Border Width="180" Classes="content-card" Padding="20" VerticalAlignment="Stretch">
+            <StackPanel Spacing="10" VerticalAlignment="Center">
+                <TextBlock Text="авто заполнение" Classes="header-prefix" HorizontalAlignment="Center" Margin="0,0,0,5" />
+                <Button Content="менеджер" Classes="menu-btn" Command="{Binding ApplyPresetCommand}" CommandParameter="{x:Static enums:UserRole.Manager}" HorizontalAlignment="Stretch"/>
+                <Button Content="снабженец" Classes="menu-btn" Command="{Binding ApplyPresetCommand}" CommandParameter="{x:Static enums:UserRole.Supplier}" HorizontalAlignment="Stretch"/>
+                <Button Content="мастер" Classes="menu-btn" Command="{Binding ApplyPresetCommand}" CommandParameter="{x:Static enums:UserRole.Master}" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</Grid>
+</UserControl>

@@ -1,0 +1,59 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.TopMenuContent">
+    <!-- Горизонтальная лента кнопок перечисления типов материалов -->
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,5">
+            
+            <Button x:Name="TabSheetButton"
+                    Classes="menu-btn"
+                    Content="[ ЛИСТОВЫЕ ]" 
+                    CommandParameter="Sheet"
+                    Padding="15,8"
+                    FontWeight="SemiBold"/>
+            
+            <Button x:Name="TabPillarButton"
+                    Classes="menu-btn"
+                    Content="[ СТОЛБЫ ]" 
+                    CommandParameter="Pillar"
+                    Padding="15,8"
+                    FontWeight="SemiBold"/>
+            
+            <Button x:Name="TabBeamButton"
+                    Classes="menu-btn"
+                    Content="[ ПРОЖИЛИНЫ ]" 
+                    CommandParameter="Beam"
+                    Padding="15,8"
+                    FontWeight="SemiBold"/>
+            
+            <Button x:Name="TabFastenerButton"
+                    Classes="menu-btn"
+                    Content="[ КРЕПЕЖ ]" 
+                    CommandParameter="Fastener"
+                    Padding="15,8"
+                    FontWeight="SemiBold"/>
+            
+            <Button x:Name="TabCementButton"
+                    Classes="menu-btn"
+                    Content="[ ЦЕМЕНТ ]" 
+                    CommandParameter="Cement"
+                    Padding="15,8"
+                    FontWeight="SemiBold"/>
+            
+            <Button x:Name="TabInertButton"
+                    Classes="menu-btn"
+                    Content="[ ИНЕРТНЫЕ ]" 
+                    CommandParameter="Inert"
+                    Padding="15,8"
+                    FontWeight="SemiBold"/>
+            
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

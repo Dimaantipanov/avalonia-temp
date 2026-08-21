@@ -1,0 +1,27 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:semi="https://irihi.tech/semi"
+             xmlns:local="using:FenceFactory.Desktop"
+             x:Class="FenceFactory.Desktop.App"
+             RequestedThemeVariant="Dark">
+             
+    <Application.DataTemplates>
+        <!-- Твой локатор вьюшек — не трогаем, он нужен для MVVM -->
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+
+
+    <Application.Styles>
+        <semi:SemiTheme />
+   
+        <StyleInclude Source="avares://FenceFactory.Desktop/Views/Styles/Elements/Buttons.axaml"/>
+        <StyleInclude Source="avares://FenceFactory.Desktop/Views/Styles/Elements/Text.axaml"/>
+        <StyleInclude Source="avares://FenceFactory.Desktop/Views/Styles/Elements/Panels.axaml"/>
+        <StyleInclude Source="avares://FenceFactory.Desktop/Views/Styles/Elements/Inputs.axaml"/>
+
+    </Application.Styles>
+
+
+
+</Application>

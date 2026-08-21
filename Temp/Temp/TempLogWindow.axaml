@@ -1,0 +1,27 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:temp="using:FenceFactory.Desktop.Temp"
+    x:Class="FenceFactory.Desktop.Temp.TempLogWindow"
+    Title="Отладка состояний ERP" 
+    Width="450" 
+    Height="600"
+    WindowStartupLocation="Manual">
+    
+    <Grid RowDefinitions="Auto,*">
+        <!-- Шапка окна -->
+        <Border Grid.Row="0" Background="#2b2b2b" Padding="10">
+            <TextBlock Text="Логи переключения панелей:" 
+                       Foreground="White" 
+                       FontWeight="Bold"/>
+        </Border>
+        
+        <!-- Список логов -->
+        <ListBox Grid.Row="1" 
+                 ItemsSource="{x:Static temp:TempLogger.LogLines}"
+                 Background="#1e1e1e"
+                 Foreground="#a9b7c6"
+                 FontFamily="Consolas,Monospace"
+                 Margin="5"/>
+    </Grid>
+</Window>

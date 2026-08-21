@@ -1,0 +1,49 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.CementMaterialPanel">
+       <!-- Главный контейнер плавно масштабируется по ширине экрана менеджера -->
+    <StackPanel Spacing="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10,20,0">
+        
+        <TextBlock Text="ПАРАМЕТРЫ СУХИХ СМЕСЕЙ (ЦЕМЕНТ)" 
+                   FontWeight="Bold" 
+                   FontSize="16" 
+                   Foreground="#E4E4E7"
+                   Margin="0,0,0,10"/>
+
+        <!-- 1. Выбор марки цемента из Enum -->
+        <StackPanel Spacing="8">
+            <Label Content="Марка прочности цемента (М400, М500):" Foreground="#A1A1AA" FontSize="13"/>
+            <!-- Убран жесткий Width. Комбобокс плавно тянется вместе с окном -->
+            <ComboBox x:Name="CementBrandComboBox" HorizontalAlignment="Stretch" Height="40" PlaceholderText="Выберите марку цемента..."/>
+        </StackPanel>
+
+        <!-- 2. Вес мешка (целое число в кг) -->
+        <StackPanel Spacing="8">
+            <Label Content="Вес фасовки мешка (в килограммах, например 50):" Foreground="#A1A1AA" FontSize="13"/>
+            <!-- Убран жесткий Width. Полная резиновая растяжка -->
+            <NumericUpDown x:Name="CementWeightInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="50"
+                           FormatString="0"/>
+            <TextBlock Text="*Стандартная заводская фасовка для строительных смесей обычно составляет 25 или 50 кг" FontSize="11" Foreground="#71717A" Margin="2,0,0,0"/>
+        </StackPanel>
+
+        <!-- Информационная плашка с будущим SKU для Цемента -->
+        <Border Background="#27272A" CornerRadius="6" Padding="15" Margin="0,15,0,0" HorizontalAlignment="Stretch">
+            <Grid ColumnDefinitions="Auto, *">
+                <TextBlock Grid.Column="0" Text="Будет создан системный номенклатурный артикул (SKU):" Foreground="#A1A1AA" VerticalAlignment="Center" FontSize="13"/>
+                <TextBlock Grid.Column="1" x:Name="CementSkuPreviewText" Text="CEM-M400-50" FontWeight="Black" Foreground="#10B981" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16"/>
+            </Grid>
+        </Border>
+        
+    </StackPanel>
+
+</UserControl>

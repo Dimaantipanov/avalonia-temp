@@ -1,0 +1,60 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.SheetMaterialPanel">
+
+    <!-- ЗАМЕНА: Каноничный Grid вместо StackPanel спасает Popup-контейнеры -->
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" Margin="20,10,20,0">
+        
+        <TextBlock Grid.Row="0"
+                   Text="ПАРАМЕТРЫ ПРОФЛИСТА / ШТАКЕТНИКА" 
+                   FontWeight="Bold" 
+                   FontSize="16" 
+                   Foreground="#E4E4E7"
+                   Margin="0,0,0,30"/>
+
+        <!-- 1. Выбор профиля из Enum -->
+        <StackPanel Grid.Row="1" Spacing="8" Margin="0,0,0,20">
+            <Label Content="Марка профиля (С8, С20):" Foreground="#A1A1AA" FontSize="13"/>
+            <ComboBox x:Name="ProfileComboBox" HorizontalAlignment="Stretch" Height="40" PlaceholderText="Выберите профиль..."/>
+        </StackPanel>
+
+        <!-- 2. Толщина металла (целое число) -->
+        <StackPanel Grid.Row="2" Spacing="8" Margin="0,0,0,20">
+            <Label Content="Толщина металла (в десятых: 45 = 0.45 мм):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="SheetThicknessInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="45"
+                           FormatString="0"/>
+        </StackPanel>
+
+        <!-- 3. Высота листа в мм -->
+        <StackPanel Grid.Row="3" Spacing="8" Margin="0,0,0,20">
+            <Label Content="Высота листа (в миллиметрах, например 2000):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="SheetHeightInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="2000"
+                           Increment="50"
+                           FormatString="0"/>
+        </StackPanel>
+
+        <!-- Информационная плашка с будущим SKU -->
+        <Border Grid.Row="4" Background="#27272A" CornerRadius="6" Padding="15" Margin="0,15,0,0" HorizontalAlignment="Stretch">
+            <Grid ColumnDefinitions="Auto, *">
+                <TextBlock Grid.Column="0" Text="Будет создан системный номенклатурный артикул (SKU):" Foreground="#A1A1AA" VerticalAlignment="Center" FontSize="13"/>
+                <TextBlock Grid.Column="1" x:Name="SkuPreviewText" Text="SHT-C8-45-2000" FontWeight="Black" Foreground="#10B981" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16"/>
+            </Grid>
+        </Border>
+        
+    </Grid>
+
+</UserControl>

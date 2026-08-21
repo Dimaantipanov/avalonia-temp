@@ -1,0 +1,64 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.ManagerMenuPart">
+
+    <DockPanel>
+        <!-- Кнопка Выхода (всегда внизу меню) -->
+        <Button
+            x:Name="ExitSystemButton"
+            Classes="exit-btn"
+            DockPanel.Dock="Bottom"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center">
+            <TextBlock
+                Classes="buton-exit-text"
+                Text="ВЫХОД СИСТЕМЫ" />
+        </Button>
+
+        <!-- 3 монолитные кнопки управления заказами -->
+        <StackPanel
+            Spacing="10"
+            VerticalAlignment="Top">
+
+            <Button
+                x:Name="CreateTemplateNavButton"
+                Classes="menu-btn active"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left">
+                <TextBlock
+                    Classes="buton-text"
+                    Text="[+] СОЗДАТЬ ШАБЛОН МАТЕРИАЛА" />
+            </Button>
+
+            <Button
+                x:Name="FillDraftNavButton"
+                Classes="menu-btn"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left">
+                <TextBlock
+                    Classes="buton-text"
+                    Text="[ ] ЗАПОЛНИТЬ ЧЕРНОВИК" />
+            </Button>
+
+            <Button
+                x:Name="ActivateOrderNavButton"
+                Classes="menu-btn"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left">
+                <TextBlock
+                    Classes="buton-text"
+                    Text="[ ] АКТИВИРОВАТЬ ОРДЕР" />
+            </Button>
+
+        </StackPanel>
+
+    </DockPanel>
+
+</UserControl>

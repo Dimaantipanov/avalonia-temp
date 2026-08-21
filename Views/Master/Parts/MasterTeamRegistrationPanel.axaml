@@ -1,0 +1,40 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Master.Parts.MasterTeamRegistrationPanel">
+    <Grid RowDefinitions="Auto, *" Margin="20">
+        
+        <!-- ВЕРХНЯЯ ЗОНА: СТРОКА ВВОДА И РЕГИСТРАЦИИ -->
+        <Border Grid.Row="0" Background="#1E1E24" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+            <Grid ColumnDefinitions="*, Auto">
+                <StackPanel Grid.Column="0" Spacing="5">
+                    <TextBlock Text="НАИМЕНОВАНИЕ / НОМЕР НОВОЙ ПРОИЗВОДСТВЕННОЙ БРИГАДЫ" FontSize="11" Foreground="#8A8A93" FontWeight="Bold"/>
+                    <TextBox x:Name="TeamNameTextBox" Height="40" VerticalContentAlignment="Center" Watermark="Введите номер или название бригады (например: БРИГАДА №3)..."/>
+                </StackPanel>
+                
+                <Button Grid.Column="1" x:Name="RegisterTeamButton" Content="ЗАРЕГИСТРИРОВАТЬ БРИГАДУ" Background="#2A5C91" Foreground="White" Height="40" Padding="25,0" Margin="15,16,0,0" VerticalContentAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+        </Border>
+
+        <!-- НИЖНЯЯ ЗОНА: ЖУРНАЛ СУЩЕСТВУЮЩИХ БРИГАД ИЗ БАЗЫ -->
+        <Border Grid.Row="1" Background="#1E1E24" CornerRadius="5" Padding="10">
+            <Grid RowDefinitions="Auto, *">
+                <TextBlock Grid.Row="0" Text="ЖУРНАЛ ЗАРЕГИСТРИРОВАННЫХ БРИГАД SYSTEM" FontSize="11" Foreground="#8A8A93" FontWeight="Bold" Margin="5,5,5,10"/>
+                
+                <DataGrid Grid.Row="1" x:Name="ActiveTeamsDataGrid" x:CompileBindings="False" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All" BorderThickness="1" BorderBrush="#2D2D35">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Идентификатор бригады (ID)" Width="150" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Наименование / Номер рабочей единицы" Width="*" Binding="{Binding Name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>
+

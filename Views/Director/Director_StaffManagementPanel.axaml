@@ -1,0 +1,88 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels.States.Director"
+    xmlns:models="using:FenceFactory.Desktop.Services.Models.Responses"
+    xmlns:dirParts="clr-namespace:FenceFactory.Desktop.Views.Director.Parts"
+    x:Class="FenceFactory.Desktop.Views.Director.Director_StaffManagementPanel"
+    x:DataType="vm:DirectorStaffManagementViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="1920"
+    d:DesignHeight="1080">
+    <DockPanel
+        Classes="main-workspace"
+        IsHitTestVisible="{Binding !IsBusy}">
+        <Border
+            Classes="content-card"
+            Margin="15"
+            Padding="15">
+            <Grid
+                RowDefinitions="Auto,Auto,*">
+
+                <TextBlock
+                    Grid.Row="0"
+                    Classes="header-title"
+                    Margin="0,0,0,16"
+                    Text="👥 Действующий персонал завода" />
+
+                <TextBlock
+                    Grid.Row="1"
+                    Classes="error-text"
+                    Margin="0,0,0,10"
+                    IsVisible="{Binding HasError}"
+                    Text="{Binding ErrorMessage}" />
+
+                <!-- Список сотрудников в виде таблицы -->
+                <ListBox
+                    Grid.Row="2"
+                    ItemsSource="{Binding Employees}"
+                    SelectedItem="{Binding SelectedEmployee}"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                    <ListBox.Styles>
+                        <Style
+                            Selector="ListBoxItem">
+                            <Setter
+                                Property="Background"
+                                Value="Transparent" />
+                            <Setter
+                                Property="Padding"
+                                Value="0" />
+                            <!-- Отступ снизу между строками таблицы -->
+                            <Setter
+                                Property="Margin"
+                                Value="0,0,0,6" />
+                            <Setter
+                                Property="Template">
+                                <ControlTemplate>
+                                    <ContentPresenter
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                </ControlTemplate>
+                            </Setter>
+                        </Style>
+                    </ListBox.Styles>
+
+                    <!-- Идеальная вертикальная табличная разметка -->
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel
+                                Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <dirParts:DirectorEmployeeCardPart />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+            </Grid>
+        </Border>
+    </DockPanel>
+</UserControl>

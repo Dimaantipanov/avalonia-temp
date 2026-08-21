@@ -1,0 +1,58 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:components="clr-namespace:FenceFactory.Desktop.Views.Master.Parts"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels"
+    x:DataType="vm:MainWindowViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="1280"
+    d:DesignHeight="800"
+    x:Class="FenceFactory.Desktop.Views.Master.MasterMainPanel">
+    
+    <!-- Главная сетка: делим экран по вертикали на верхнюю шапку (70px) и нижнюю рабочую зону (*) -->
+    <Grid
+        Background="#14161B"
+        RowDefinitions="70,*">
+
+        <!-- ВЕРХНЯЯ ШАПКА -->
+        <Border
+            Grid.Row="0"
+            Classes="sidebar-panel"
+            BorderThickness="0,0,0,1"
+            Padding="20,0">
+            <Grid>
+                <!-- Технический префикс слева -->
+                <TextBlock
+                    Classes="header-prefix"
+                    HorizontalAlignment="Left"
+                    Text="// WORKSPACE.MASTER" />
+
+                <!-- Главный заголовок по центру -->
+                <TextBlock
+                    Classes="header-title"
+                    HorizontalAlignment="Center"
+                    Text="ЭКРАН МАСТЕРА" />
+            </Grid>
+        </Border>
+
+        <!-- НИЖНЯЯ РАБОЧАЯ ЗОНА -->
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="260,*">
+
+            <!-- ТВОЯ ЛЕВАЯ ПАНЕЛЬ С КНОПКАМИ МАСТЕРА -->
+            <components:MasterMenuPart 
+                Grid.Column="0" />
+
+            <!-- ТВОЯ ПРАВАЯ ЧАСТЬ (Целевой вьюпорт Мастера под слайсы) -->
+            <Grid
+                Grid.Column="1"
+                Name="MasterViewport">
+                <!-- Сюда фабрика будет силой вшивать 3 правых слайса -->
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,59 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:FenceFactory.Desktop.ViewModels"
+        xmlns:statesAuth="using:FenceFactory.Desktop.ViewModels.States.Auth"
+        xmlns:statesDirector="using:FenceFactory.Desktop.ViewModels.States.Director"
+        xmlns:statesManager="using:FenceFactory.Desktop.ViewModels.States.Manager"
+        xmlns:statesSupplier="using:FenceFactory.Desktop.ViewModels.States.Supplier"
+        xmlns:statesMaster="using:FenceFactory.Desktop.ViewModels.States.Master"
+        xmlns:viewsAuth="using:FenceFactory.Desktop.Views.Auth"
+        xmlns:viewsDirector="using:FenceFactory.Desktop.Views.Director"
+        xmlns:viewsManager="using:FenceFactory.Desktop.Views.Manager"
+        xmlns:viewsMaster="using:FenceFactory.Desktop.Views.Master"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
+        x:Class="FenceFactory.Desktop.Views.Auth.AppShellWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="FenceFactory ERP"
+        WindowStartupLocation="CenterScreen"
+        Classes="window-shell">
+
+    <!-- КАРТА ДАННЫХ: Связываем типы ViewModel с их физическими AXAML разметками панелей -->
+    <Window.DataTemplates>
+        <!-- Авторизация (Твоя форма входа, которая сейчас в MainWindow) -->
+        <!-- СТАЛО (чистый канонический MVVM): -->
+        <DataTemplate DataType="{x:Type statesAuth:AuthViewModel}">
+            <viewsAuth:AuthView />
+        </DataTemplate>
+
+
+        <!-- Панели Директора -->
+        <DataTemplate DataType="{x:Type statesDirector:DirectorRegistrationViewModel}">
+            <viewsDirector:Director_RegistrationPanel />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type statesDirector:DirectorCoreStaffRegistrationViewModel}">
+            <viewsDirector:DirectorCoreStaffRegistrationPanel />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type statesDirector:DirectorStaffManagementViewModel}">
+            <viewsDirector:Director_StaffManagementPanel />
+        </DataTemplate>
+
+        <!-- Панели Менеджера -->
+        <DataTemplate DataType="{x:Type statesManager:ManagerMaterialTemplateViewModel}">
+            <viewsManager:ManagerMainPanel />
+        </DataTemplate>
+
+        <!-- Панели Мастера -->
+        <DataTemplate DataType="{x:Type statesMaster:MasterTeamRegistrationViewModel}">
+            <viewsMaster:MasterMainPanel />
+        </DataTemplate>
+    </Window.DataTemplates>
+
+    <!-- ДИНАМИЧЕСКИЙ ХОСТ: Сюда Avalonia будет подставлять нужную разметку панели -->
+    <ContentControl Content="{Binding CurrentPage}" />
+
+</Window>

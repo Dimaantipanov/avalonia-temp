@@ -1,0 +1,77 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.BeamMaterialPanel">
+      <!-- Главный контейнер плавно масштабируется по ширине экрана менеджера -->
+    <StackPanel Spacing="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10,20,0">
+        
+        <TextBlock Text="ПАРАМЕТРЫ ПРОЖИЛИНЫ / ЛАГИ" 
+                   FontWeight="Bold" 
+                   FontSize="16" 
+                   Foreground="#E4E4E7"
+                   Margin="0,0,0,10"/>
+
+        <!-- Размеры сечения: Ширина и Глубина в одну строку для экономии места -->
+        <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+            <!-- 1. Ширина сечения лаги в мм -->
+            <StackPanel Grid.Column="0" Spacing="8">
+                <Label Content="Ширина сечения лаги (в мм, например 40):" Foreground="#A1A1AA" FontSize="13"/>
+                <NumericUpDown x:Name="BeamWidthInput" 
+                               HorizontalAlignment="Stretch" 
+                               Height="40"
+                               Minimum="1" 
+                               Value="40"
+                               FormatString="0"/>
+            </StackPanel>
+
+            <!-- 2. Глубина сечения лаги в мм -->
+            <StackPanel Grid.Column="1" Spacing="8">
+                <Label Content="Глубина сечения лаги (в мм, например 20):" Foreground="#A1A1AA" FontSize="13"/>
+                <NumericUpDown x:Name="BeamDepthInput" 
+                               HorizontalAlignment="Stretch" 
+                               Height="40"
+                               Minimum="1" 
+                               Value="20"
+                               FormatString="0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 3. Толщина стенки металла прожилины -->
+        <StackPanel Spacing="8">
+            <Label Content="Толщина стенки (в десятых: 15 = 1.5 мм, 20 = 2.0 мм):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="BeamThicknessInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="15"
+                           FormatString="0"/>
+        </StackPanel>
+
+        <!-- 4. Длина хлыста лаги в мм -->
+        <StackPanel Spacing="8">
+            <Label Content="Длина хлыста (в миллиметрах, например 3000 или 6000):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="BeamLengthInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="3000"
+                           Increment="500"
+                           FormatString="0"/>
+        </StackPanel>
+
+        <!-- Информационная плашка с будущим SKU для Прожилины -->
+        <Border Background="#27272A" CornerRadius="6" Padding="15" Margin="0,15,0,0" HorizontalAlignment="Stretch">
+            <Grid ColumnDefinitions="Auto, *">
+                <TextBlock Grid.Column="0" Text="Будет создан системный номенклатурный артикул (SKU):" Foreground="#A1A1AA" VerticalAlignment="Center" FontSize="13"/>
+                <TextBlock Grid.Column="1" x:Name="BeamSkuPreviewText" Text="BEM-4020-15-3000" FontWeight="Black" Foreground="#10B981" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16"/>
+            </Grid>
+        </Border>
+        
+    </StackPanel>
+
+</UserControl>

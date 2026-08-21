@@ -1,0 +1,79 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.PillarMaterialPanel">
+      <!-- Главный контейнер плавно растягивается на всю доступную ширину экрана менеджера -->
+       <!-- Главный контейнер плавно растягивается на всю доступную ширину экрана менеджера -->
+    <StackPanel Spacing="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10,20,0">
+        
+        <TextBlock Text="ПАРАМЕТРЫ ОПОРЫ / СТОЛБА" 
+                   FontWeight="Bold" 
+                   FontSize="16" 
+                   Foreground="#E4E4E7"
+                   Margin="0,0,0,10"/>
+
+        <!-- Размеры сечения: Ширина и Глубина в одну строку, чтобы интерфейс не выглядел слишком длинным -->
+        <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+            <!-- 1. Ширина сечения в мм -->
+            <StackPanel Grid.Column="0" Spacing="8">
+                <Label Content="Ширина сечения трубы (в мм, например 60):" Foreground="#A1A1AA" FontSize="13"/>
+                <NumericUpDown x:Name="PillarWidthInput" 
+                               HorizontalAlignment="Stretch" 
+                               Height="40"
+                               Minimum="1" 
+                               Value="60"
+                               FormatString="0"/>
+            </StackPanel>
+
+            <!-- 2. Глубина сечения в мм -->
+            <StackPanel Grid.Column="1" Spacing="8">
+                <Label Content="Глубина сечения трубы (в мм, например 60):" Foreground="#A1A1AA" FontSize="13"/>
+                <NumericUpDown x:Name="PillarDepthInput" 
+                               HorizontalAlignment="Stretch" 
+                               Height="40"
+                               Minimum="1" 
+                               Value="60"
+                               FormatString="0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 3. Толщина стенки металла -->
+        <StackPanel Spacing="8">
+            <Label Content="Thickness (в десятых: 20 = 2.0 мм, 30 = 3.0 мм):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="PillarThicknessInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="20"
+                           FormatString="0"/>
+        </StackPanel>
+
+        <!-- 4. Высота столба в мм -->
+        <StackPanel Spacing="8">
+            <Label Content="Высота готового столба (в миллиметрах, например 3000):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="PillarHeightInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="3000"
+                           Increment="100"
+                           FormatString="0"/>
+        </StackPanel>
+
+        <!-- Информационная плашка с будущим SKU для Столба -->
+        <Border Background="#27272A" CornerRadius="6" Padding="15" Margin="0,15,0,0" HorizontalAlignment="Stretch">
+            <Grid ColumnDefinitions="Auto, *">
+                <TextBlock Grid.Column="0" Text="Будет создан системный номенклатурный артикул (SKU):" Foreground="#A1A1AA" VerticalAlignment="Center" FontSize="13"/>
+                <TextBlock Grid.Column="1" x:Name="PillarSkuPreviewText" Text="PIL-6060-20-3000" FontWeight="Black" Foreground="#10B981" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16"/>
+            </Grid>
+        </Border>
+        
+    </StackPanel>
+
+
+</UserControl>

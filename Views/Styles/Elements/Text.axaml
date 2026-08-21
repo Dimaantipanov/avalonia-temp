@@ -1,0 +1,47 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Add Resources Here -->
+    <!-- НАСТРОЙКА ТЕКСТА КНОПОК МЕНЮ -->
+    <Style Selector="TextBlock.buton-text">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+    </Style>
+
+    <!-- НАСТРОЙКА ТЕКСТА КНОПКИ ВЫХОДА -->
+    <Style Selector="TextBlock.buton-exit-text">
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- ШАБЛОН ДЛЯ ТЕХНИЧЕСКИХ ПРЕФИКСОВ (Слева в шапке) -->
+    <Style Selector="TextBlock.header-prefix">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="#8A929F"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="LetterSpacing" Value="1"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- ШАБЛОН ДЛЯ ГЛАВНЫХ ЗАГОЛОВКОВ ПАНЕЛЕЙ (По центру) -->
+    <Style Selector="TextBlock.header-title">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Black"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="LetterSpacing" Value="0.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- СТИЛЬ ДЛЯ ЖЕСТКИХ ОШИБОК И АЛАРМОВ -->
+    <Style Selector="TextBlock.error-text">
+        <Setter Property="Foreground" Value="#FF4A4A"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+
+</Styles>

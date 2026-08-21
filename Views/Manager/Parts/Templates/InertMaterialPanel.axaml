@@ -1,0 +1,49 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.InertMaterialPanel">
+
+      <!-- Главный контейнер плавно масштабируется по ширине экрана менеджера -->
+    <StackPanel Spacing="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10,20,0">
+        
+        <TextBlock Text="ПАРАМЕТРЫ ИНЕРТНЫХ МАТЕРИАЛОВ (В МЕШКАХ)" 
+                   FontWeight="Bold" 
+                   FontSize="16" 
+                   Foreground="#E4E4E7"
+                   Margin="0,0,0,10"/>
+
+        <!-- 1. Выбор типа инертного материала из Enum -->
+        <StackPanel Spacing="8">
+            <Label Content="Тип материала (Песок речной, Щебень фракционный):" Foreground="#A1A1AA" FontSize="13"/>
+            <!-- Полная резиновая растяжка вместе с окном -->
+            <ComboBox x:Name="InertTypeComboBox" HorizontalAlignment="Stretch" Height="40" PlaceholderText="Выберите тип сырья..."/>
+        </StackPanel>
+
+        <!-- 2. Вес мешка (целое число в кг) -->
+        <StackPanel Spacing="8">
+            <Label Content="Вес мешка (в килограммах, например 50):" Foreground="#A1A1AA" FontSize="13"/>
+            <NumericUpDown x:Name="InertWeightInput" 
+                           HorizontalAlignment="Stretch" 
+                           Height="40"
+                           Minimum="1" 
+                           Value="50"
+                           FormatString="0"/>
+            <TextBlock Text="*Стандартная фасовка песка и щебня для удобства ручной погрузки на объекте составляет 40-50 кг" FontSize="11" Foreground="#71717A" Margin="2,0,0,0"/>
+        </StackPanel>
+
+        <!-- Информационная плашка с будущим SKU для Инертных -->
+        <Border Background="#27272A" CornerRadius="6" Padding="15" Margin="0,15,0,0" HorizontalAlignment="Stretch">
+            <Grid ColumnDefinitions="Auto, *">
+                <TextBlock Grid.Column="0" Text="Будет создан системный номенклатурный артикул (SKU):" Foreground="#A1A1AA" VerticalAlignment="Center" FontSize="13"/>
+                <TextBlock Grid.Column="1" x:Name="InertSkuPreviewText" Text="INR-SandRiver-50" FontWeight="Black" Foreground="#10B981" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16"/>
+            </Grid>
+        </Border>
+        
+    </StackPanel>
+
+</UserControl>

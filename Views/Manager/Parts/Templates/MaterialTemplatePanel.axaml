@@ -1,0 +1,64 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:templates="clr-namespace:FenceFactory.Desktop.Views.Manager.Parts.Templates"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="FenceFactory.Desktop.Views.Manager.Parts.Templates.MaterialTemplatePanel">
+
+    <Grid
+        RowDefinitions="Auto, *, Auto"
+        Margin="20">
+        <!-- Слой 0 (Вверху): Меню с кнопками переключения материалов -->
+        <ContentControl
+            Grid.Row="0"
+            Margin="0,0,0,15">
+            <ContentControl.Content>
+                <templates:TopMenuContent
+                    x:Name="TopMenu" />
+            </ContentControl.Content>
+        </ContentControl>
+
+        <!-- Слой 1 (В середине): Обернули в VisualLayerManager для оживления ComboBox/Popup -->
+        <VisualLayerManager Grid.Row="1">
+            <ContentControl
+                x:Name="MaterialPanelContainer"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch">
+                <ContentControl.Content>
+                    <templates:InertMaterialPanel />
+                </ContentControl.Content>
+            </ContentControl>
+        </VisualLayerManager>
+
+        <!-- Слой 2 (Внизу): Намертво вшитая кнопка сохранения шаблона -->
+        <Border
+            Grid.Row="2"
+            BorderBrush="#3F3F46"
+            BorderThickness="0,1,0,0"
+            Padding="0,15,0,0">
+            <Grid
+                ColumnDefinitions="*, Auto">
+                <!-- Статусная строка для ошибок бэка -->
+                <TextBlock
+                    x:Name="ErrorBlockText"
+                    Grid.Column="0"
+                    Text=""
+                    Foreground="Red"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold" />
+
+                <!-- Одна кнопка на весь экран -->
+                <Button
+                    x:Name="SaveTemplateButton"
+                    Grid.Column="1"
+                    Content="СОХРАНИТЬ ШАБЛОН"
+                    Padding="20,10"
+                    FontWeight="Bold" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

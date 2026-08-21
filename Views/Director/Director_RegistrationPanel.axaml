@@ -1,0 +1,148 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:FenceFactory.Desktop.ViewModels.States.Director"
+    mc:Ignorable="d"
+    d:DesignWidth="1920"
+    d:DesignHeight="1080"
+    x:Class="FenceFactory.Desktop.Views.Director.Director_RegistrationPanel"
+    x:DataType="vm:DirectorRegistrationViewModel"
+    Classes="window-shell">
+
+     <!-- Горизонтальный контейнер для центрирования основной формы и панели пресетов -->
+    <StackPanel
+        Orientation="Horizontal"
+        Spacing="20"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+
+        <!-- Основной контейнер-карточка по центру. Блокируется при запросах к бэкенду -->
+        <Border
+            Classes="content-card"
+            Width="360"
+            Padding="30,40"
+            IsEnabled="{Binding !IsBusy}">
+
+            <StackPanel
+                Spacing="18">
+
+                <!-- Заголовок в твоем фирменном стиле -->
+                <TextBlock
+                    Classes="header-title"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,10"
+                    Text="РЕГИСТРАЦИЯ ДИРЕКТОРА" />
+
+                <!-- Поле Email -->
+                <StackPanel
+                    Spacing="6">
+                    <TextBlock
+                        Classes="header-prefix"
+                        Text="Рабочий Email" />
+                    <TextBox
+                        Text="{Binding NewEmail, Mode=TwoWay}"
+                        Classes="main-input"
+                        Watermark="example@factory.com" />
+                </StackPanel>
+
+                <!-- Поле Пароля -->
+                <StackPanel
+                    Spacing="6">
+                    <TextBlock
+                        Classes="header-prefix"
+                        Text="Пароль" />
+                    <TextBox
+                        Text="{Binding NewPassword, Mode=TwoWay}"
+                        Classes="main-input"
+                        PasswordChar="•"
+                        Watermark="••••••••" />
+                </StackPanel>
+
+                <!-- Поле Подтверждения Пароля -->
+                <StackPanel
+                    Spacing="6">
+                    <TextBlock
+                        Classes="header-prefix"
+                        Text="Подтверждение пароля" />
+                    <TextBox
+                        Text="{Binding ConfirmPassword, Mode=TwoWay}"
+                        Classes="main-input"
+                        PasswordChar="•"
+                        Watermark="••••••••" />
+                </StackPanel>
+
+                <!-- Блок успешного уведомления: горит синим при успешном ответе бэкенда -->
+                <TextBlock
+                    Text="{Binding SuccessMessage}"
+                    FontFamily="Courier New"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="#3B82F6"
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"
+                    Margin="0,5,0,5"
+                    IsVisible="{Binding HasSuccess}" />
+
+                <!-- Строка проверки ошибок на форме регистрации. Видна только при наличии ошибки -->
+                <TextBlock
+                    Text="{Binding ErrorMessage}"
+                    Classes="error-text"
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"
+                    Margin="0,5,0,5"
+                    IsVisible="{Binding HasError}" />
+
+                <!-- Кнопка создания системы. Привязана к RelayCommand -->
+                <Button
+                    Command="{Binding RegisterDirectorCommand}"
+                    Classes="menu-btn active"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Margin="0,10,0,0">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="РЕГИСТРАЦИЯ" />
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Вспомогательная панель быстрых пресетов (ОДНА КНОПКА ПО ТЗ) -->
+        <Border
+            Classes="content-card"
+            Width="180"
+            Padding="20"
+            VerticalAlignment="Stretch"
+            IsEnabled="{Binding !IsBusy}">
+            
+            <StackPanel
+                Spacing="10"
+                VerticalAlignment="Center">
+                
+                <TextBlock
+                    Classes="header-prefix"
+                    Text="авто заполнение"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,5" />
+                
+                <!-- Команда автозаполнения выковыряна и привязана напрямую к логике пресетов -->
+                <Button
+                    Command="{Binding ApplyPresetCommand}"
+                    CommandParameter="Director"
+                    Classes="menu-btn"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center">
+                    <TextBlock
+                        Classes="buton-text"
+                        Text="директор" />
+                </Button>
+                
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</UserControl>

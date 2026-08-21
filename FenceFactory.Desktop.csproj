@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+    <Folder Include="ViewModels\Panels\Master\" />
+    <Folder Include="ViewModels\Panels\Supplier\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.6" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.6" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.6" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.6" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.6" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.3.6">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="Semi.Avalonia" Version="11.2.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Frontend\FenceFactory.Desktop\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\Frontend\FenceFactory.Desktop\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Director\Director_RegistrationPanel.axaml.cs">
+      <DependentUpon>Director_RegistrationPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\ManagerMainPanel.axaml.cs">
+      <DependentUpon>ManagerMainPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\MaterialTemplatePanel.axaml.cs">
+      <DependentUpon>MaterialTemplatePanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\TopMenuContent.axaml.cs">
+      <DependentUpon>TopMenuContent.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\SheetMaterialPanel.axaml.cs">
+      <DependentUpon>SheetMaterialPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\PillarMaterialPanel.axaml.cs">
+      <DependentUpon>PillarMaterialPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\BeamMaterialPanel.axaml.cs">
+      <DependentUpon>BeamMaterialPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\FastenerMaterialPanel.axaml.cs">
+      <DependentUpon>FastenerMaterialPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\CementMaterialPanel.axaml.cs">
+      <DependentUpon>CementMaterialPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Templates\InertMaterialPanel.axaml.cs">
+      <DependentUpon>InertMaterialPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Drafts\DraftPanel.axaml.cs">
+      <DependentUpon>DraftPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Manager\Parts\Orders\OrderPanel.axaml.cs">
+      <DependentUpon>OrderPanel.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

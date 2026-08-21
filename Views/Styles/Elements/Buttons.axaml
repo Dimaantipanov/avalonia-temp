@@ -1,0 +1,35 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Add Resources Here -->
+    
+    <!-- НАСТРОЙКА КНОПОК МЕНЮ: РУБИМ УГЛЫ И СТАВИМ КОНТРАСТ -->
+    <Style Selector="Button.menu-btn">
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="FontFamily" Value="Courier New"/>
+        <Setter Property="Background" Value="#1A1C20"/>
+        <Setter Property="Foreground" Value="#E2E8F0"/>
+        <Setter Property="BorderBrush" Value="#2D3139"/>
+        <Setter Property="BorderThickness" Value="1"/>
+       
+        <Setter Property="Padding" Value="15,0"/>
+        <Setter Property="Height" Value="42"/>
+    </Style>
+    
+    <!-- СТИЛЬ ДЛЯ АКТИВНОЙ КНОПКИ И ПРИ НАВЕДЕНИИ МЫШИ -->
+    <Style Selector="Button.menu-btn:pointerover, Button.menu-btn.active">
+        <Setter Property="Background" Value="#3B82F6"/>
+        <Setter Property="BorderBrush" Value="#60A5FA"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+    </Style>
+
+    <!-- СТИЛЬ ДЛЯ КНОПКИ ВЫХОДА -->
+    <Style Selector="Button.exit-btn">
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="FontFamily" Value="Courier New"/>
+        <Setter Property="Background" Value="#2D1A1C"/>
+        <Setter Property="BorderBrush" Value="#5C2429"/>
+        <Setter Property="BorderThickness" Value="1"/>
+     
+        <Setter Property="Height" Value="38"/>
+    </Style>
+</Styles>
