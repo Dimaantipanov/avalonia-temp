@@ -135,7 +135,7 @@ public partial class DirectorCoreStaffRegistrationViewModel : StateViewModelBase
     [RelayCommand]
     private void NextStep()
     {
-        Temp.TempLogger.Log("[НАВИГАЦИЯ]: Переход к экрану управления персоналом...");
+      //  Temp.TempLogger.Log("[НАВИГАЦИЯ]: Переход к экрану управления персоналом...");
         NavigationRequested?.Invoke(ApplicationState.DirectorStaffManagement);
     }
 
