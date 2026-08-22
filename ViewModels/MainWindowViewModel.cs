@@ -78,10 +78,9 @@ public partial class MainWindowViewModel : ViewModelBase
         ApplicationState.DirectorCoreStaffRegistration => new States.Director.DirectorCoreStaffRegistrationViewModel(
             new StaffNetworkClient(_httpClient, _networkSession)),
 
-
-        ApplicationState.DirectorStaffManagement => new States.Director.DirectorStaffManagementViewModel(_httpClient,
-            _networkSession),
-
+        // Каноничное инжектирование сервиса без проброса HttpClient во ViewModel
+        ApplicationState.DirectorStaffManagement => new States.Director.DirectorStaffManagementViewModel(
+            new StaffApiService(_httpClient, _networkSession)),
 
         ApplicationState.ManagerMaterialTemplate => new States.Manager.ManagerMaterialTemplateViewModel(),
         ApplicationState.ManagerDraft => new States.Manager.ManagerDraftViewModel(),
@@ -93,4 +92,5 @@ public partial class MainWindowViewModel : ViewModelBase
         ApplicationState.MasterTeamDeletion => new States.Master.MasterTeamDeletionViewModel(),
         _ => throw new ArgumentOutOfRangeException(nameof(state), state, null)
     };
+
 }

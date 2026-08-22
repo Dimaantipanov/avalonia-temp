@@ -68,6 +68,11 @@ public partial class EmployeeCardViewModel : ObservableObject
     [RelayCommand]
     public void DeleteEmployee() // Сделано public для корректной генерации DeleteEmployeeCommand
     {
+        // Логируем сам факт клика по кнопке из UI
+        Temp.TempLogger.Log(
+            $"[КЛИК УВОЛИТЬ] Сработала команда для Email: {Model.Email}. Проверяем наличие подписчиков на событие DeleteRequested: {DeleteRequested != null}");
+
+        
         DeleteRequested?.Invoke(this, this);
     }
 

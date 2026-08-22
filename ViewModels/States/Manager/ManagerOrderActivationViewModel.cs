@@ -28,7 +28,11 @@ public partial class ManagerOrderActivationViewModel : StateViewModelBase
         // Подключаем коммутатор для управления левой панелью меню
       //  _menuCommutator.Connect(_mainPanel.Menu, this.State, targetState => NavigationRequested?.Invoke(targetState));
 
-        FenceFactory.Desktop.Views.Auth.AppShellWindow.Instance.SetContent(_mainPanel);
+      if (_mainPanel is not null)
+      {
+          FenceFactory.Desktop.Views.Auth.AppShellWindow.Instance.SetContent(_mainPanel);
+      }
+
 
         Temp.TempLogger.Log($"[СКРИПТ МЕНЕДЖЕРА]: Слайс {this.State} (Активация ордера) успешно выведен на холст!");
     }
